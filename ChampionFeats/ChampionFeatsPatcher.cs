@@ -407,17 +407,43 @@ namespace ChampionFeats
                     }));
                 });
 
+                var ChampionBombMastery = Helpers.CreateBlueprint<BlueprintFeature>(AddBombDamagePerDie.BLUEPRINTNAME, bp =>
+                {
+                    bp.IsClassFeature = true;
+                    bp.ReapplyOnLevelUp = true;
+                    if (!Main.settings.FeatsAreMythic)
+                    {
+                        bp.Groups = new FeatureGroup[] { FeatureGroup.CombatFeat, FeatureGroup.Feat };
+                    }
+                    else
+                    {
+                        bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
+                    }
+                    bp.Ranks = 1;
+                    bp.SetName("终极爆弹");
+                    bp.SetDescription(String.Format("你的炼金炸弹极具破坏力，炸弹的每一个伤害骰都会造成额外的 {0} 点伤害。",
+                        Main.settings.BombDamageBonusPerDie));
+                    bp.m_DescriptionShort = bp.m_Description;
+                    bp.AddComponent(Helpers.Create<AddBombDamagePerDie>());
+                    bp.AddComponent(Helpers.Create<FeatureTagsComponent>(c =>
+                    {
+                        c.FeatureTags = FeatureTag.Damage | FeatureTag.ClassSpecific;
+                    }));
+                });
+
                 if (!Main.settings.FeatsAreMythic)
                 {
                     FeatTools.AddAsFeat(ChampionOffenceSpellPen);
                     FeatTools.AddAsFeat(ChampionOffenceSpellDC);
                     FeatTools.AddAsFeat(ChampionOffenceSpellDam);
+                    FeatTools.AddAsFeat(ChampionBombMastery);
                 }
                 else
                 {
                     FeatTools.AddAsMythicFeats(ChampionOffenceSpellPen);
                     FeatTools.AddAsMythicFeats(ChampionOffenceSpellDC);
                     FeatTools.AddAsMythicFeats(ChampionOffenceSpellDam);
+                    FeatTools.AddAsMythicFeats(ChampionBombMastery);
                 }
 
             }
