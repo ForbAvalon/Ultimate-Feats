@@ -40,16 +40,16 @@ namespace ChampionFeats
                 switch (step)
                 {
                     case 1:
-                        stepString = "For each";
+                        stepString = "此后每1";
                         break;
                     case 2:
-                        stepString = "At 2nd level, and every 2nd";
+                        stepString = "在第2级以及此后每2";
                         break;
                     case 3:
-                        stepString = "At 3rd level, and every 3rd";
+                        stepString = "在第3级以及此后每3";
                         break;
                     default:
-                        stepString = String.Format("At {0}th level, and every {0}th", step);
+                        stepString = String.Format("在第{0}级以及此后每{0}", step);
                         break;
                 }
                 return stepString;
@@ -61,16 +61,16 @@ namespace ChampionFeats
                 switch (step)
                 {
                     case 1:
-                        stepString = "For each";
+                        stepString = "此后每1";
                         break;
                     case 2:
-                        stepString = "At 3rd level, and every 2nd";
+                        stepString = "在第3级以及此后每2";
                         break;
                     case 3:
-                        stepString = "At 4th level, and every 3rd";
+                        stepString = "在第4级以及此后每3";
                         break;
                     default:
-                        stepString = String.Format("At {0}th level, and every {1}th", step, step - 1);
+                        stepString = String.Format("在第{0}级以及此后每{1}", step, step - 1);
                         break;
                 }
                 return stepString;
@@ -126,9 +126,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Protection");
+                    bp.SetName("终极防御");
                     string stepString = getStepString(Main.settings.ScalingACLevelsPerStep);
-                    bp.SetDescription(String.Format("Whether it's from practice or tutoring, your ability to defend yourself in armor surpasses most. You gain +{0}/+{1}/+{2} AC while wearing light/medium/heavy armor. {3} level beyond that, this bonus increases by the same increment.",
+                    bp.SetDescription(String.Format("无论源于苦练还是受教，你身着护甲时的防御能力皆超乎常人。穿戴轻型/中型/重型护甲时，你获得+{0}/+{1}/+{2}点防御等级。{3}级，该加值按相同幅度增加。",
                         Main.settings.ScalingACArmorBonusLightPerStep, Main.settings.ScalingACArmorBonusMediumPerStep, Main.settings.ScalingACArmorBonusHeavyPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddACFromArmor>(c =>
@@ -161,9 +161,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Guard");
+                    bp.SetName("终极坚韧");
                     string stepString = getStepString(Main.settings.ScalingDRLevelsPerStep);
-                    bp.SetDescription(String.Format("You stand firm and resist whatever physical harm comes for you, no matter what it is. You gain +{0} DR/-. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(String.Format("你坚定屹立，抵御一切袭来的物理伤害，无论其形式如何。你获得+{0}点DR/-。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingDRBonusPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
 
@@ -204,9 +204,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Saves");
+                    bp.SetName("终极豁免");
                     string stepString = getStepString(Main.settings.ScalingSaveLevelsPerStep);
-                    bp.SetDescription(string.Format("Your natural ability to avoid danger protects you from harm. You gain +{0} to all saving throws. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(string.Format("你规避危险的本能护你免受伤害。你的所有豁免检定获得+{0}加值。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingSaveBonusPerLevel, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
 
@@ -243,13 +243,13 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Skills");
+                    bp.SetName("终极技艺");
                     string stepString = getStepString(Main.settings.ScalingSkillsLevelsPerStep);
-                    string descString = string.Format("Your prowess knows no boundaries, picking up new skills at an inexplicable pace. You gain +{0} to all skills. {1} level beyond that, this bonus increases by +{0}.",
+                    string descString = string.Format("你的造诣无可限量，能以匪夷所思的速度掌握新技能。你的所有技能获得+{0}加值。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingSkillsBonusPerLevel, stepString);
                     if (AddScalingSkillBonus.AddToBaseValue)
                     {
-                        descString += " Bonuses from this feat will be applied directly as skill ranks and will not appear separately as a bonus during skill checks.";
+                        descString += " 此专长提供的加值将直接计入技能等级，而不会在进行技能检定时作为加值单独显示。";
                     }
                     bp.SetDescription(descString);
                     bp.m_DescriptionShort = bp.m_Description;
@@ -278,9 +278,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Aim");
+                    bp.SetName("终极精准");
                     String stepString = getStepStringWOffset(Main.settings.ScalingABLevelsPerStep);
-                    bp.SetDescription(String.Format("Whether it's from practice or tutoring, your ability to hit targets surpasses most. You gain +{0} attack bonus. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(String.Format("无论源于苦练还是受教，你命中目标的能力皆超乎常人。你获得+{0}点攻击加值。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingABBonusPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddScalingAttackBonus>(c => { }));
@@ -302,9 +302,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Strikes");
+                    bp.SetName("终极猛击");
                     String stepString = getStepStringWOffset(Main.settings.ScalingDamageLevelsPerStep);
-                    bp.SetDescription(String.Format("Your weapon attacks strike hard, no matter how tough the foe. You gain +{0} damage to attacks. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(String.Format("无论敌人多么顽强，你的武器攻击皆能重创对手。你的攻击获得+{0}点伤害。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingDamageBonusPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddScalingDamageBonus>(c => { }));
@@ -340,9 +340,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Spell Blasts");
+                    bp.SetName("终极魔爆");
                     String stepString = getStepStringWOffset(Main.settings.ScalingSpellDamageLevelsPerStep);
-                    bp.SetDescription(String.Format("Your magical arts strike hard, no matter how tough the foe. You gain +{0} damage to spell attacks per damage die. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(String.Format("无论敌人多么顽强，你的魔法技艺皆能重创对手。你的法术攻击每个伤害骰获得+{0}点伤害。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingSpellDamageBonusPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddScalingSpellDamage>(c => { }));
@@ -366,9 +366,9 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Spell Force");
+                    bp.SetName("终极咒力");
                     String stepString = getStepStringWOffset(Main.settings.ScalingSpellDCLevelsPerStep);
-                    bp.SetDescription(String.Format("Your magical arts are overwhelming for enemies to deal with. You gain +{0} to the DC of your spells. {1} level beyond that, increases it by +{0}.",
+                    bp.SetDescription(String.Format("你的魔法技艺令敌人难以招架。你的法术豁免难度获得+{0}加值。{1}级，该数值增加+{0}。",
                         Main.settings.ScalingSpellDCBonusPerStep, stepString));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddScalingSpellDC>(c => { }));
@@ -392,8 +392,8 @@ namespace ChampionFeats
                         bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                     }
                     bp.Ranks = 1;
-                    bp.SetName("Champion Spell Penetration");
-                    bp.SetDescription(String.Format("Your magical arts are trained to pierce even the thickest of protections. Half of +{0} per character level (minimum of +1) is added as bonus spell penetration. If you have Spell Penetration, it's +{0} per character level instead.",
+                    bp.SetName("终极法穿");
+                    bp.SetDescription(String.Format("你的魔法技艺经过磨练，足以穿透最严密的防护。你获得法术穿透加值，数值相当于每2个角色等级+{0}（至少+1）。若你拥有“法术穿透”专长，则改为每角色等级+{0}。",
                         Main.settings.ScalingSpellPenBonusPerLevel));
                     bp.m_DescriptionShort = bp.m_Description;
                     bp.AddComponent(Helpers.Create<AddScalingSpellPenetration>(c =>
