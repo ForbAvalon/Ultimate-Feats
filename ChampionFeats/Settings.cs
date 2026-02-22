@@ -43,6 +43,8 @@ namespace ChampionFeats
         public int ScalingSpellDCBonusPerStep = 1;
         // Champion Spell Penetration
         public int ScalingSpellPenBonusPerLevel = 1;
+        // Champion Bomb
+        public int ScalingBombDamageBonusPerDie = 1;
     }
 
 }
